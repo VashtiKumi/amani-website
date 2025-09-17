@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Amani Maternal Bliss Care</title>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
@@ -12,10 +11,12 @@
 </head>
 <body>
   <div id="loader">
+    <div class="loader-bg"></div>
     <div class="square">
       <div class="sea-mix"></div>
       <div class="circle"></div>
     </div>
+    <div class="loader-bubbles" aria-hidden="true"></div>
     <p style="margin-top: 20px; font-size: 20px; color: white;">Amani Maternal Bliss Care - Website</p>
     <p style="margin-top: 15px; font-size: 14px; color: white;">Initializing environment</p>
   </div>
@@ -37,18 +38,18 @@
           <a href="#products">Products</a>
           <a href="#corporate">Corporate</a>
           <a href="#contact">Contact</a>
-          <a href="#contact" class="btn">Get Started</a>
+          <a href="#contact" class="btn"><span> Get Started <span></a>
         </div>
 
         <button class="mobile-menu-btn" id="mobileBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
       </div>
     </nav>
 
-    <section class="hero" id="hero">
+<section class="hero" id="hero">
       <div class="hero-container">
         <div class="hero-content fade-in">
           <h1>Amani Maternal Bliss Care</h1>
-          <p>Private-sector-led maternal support that helps businesses care for employees and communities — through nursing aids, postnatal programmes, lactation rooms, telehealth and more.</p>
+              <p>Private-sector-led maternal support that helps businesses care for employees and communities — through nursing aids, postnatal programmes, lactation rooms, telehealth and more.</p>
           <div class="hero-buttons">
             <a href="#contact" class="btn">Partner with Us</a>
             <a href="#services" class="btn btn-outline">Our Services</a>
@@ -66,16 +67,25 @@
     </div>
 
         <div class="hero-image slide-in-right">
-          <img src="img/Image_fx (45).jpg" alt="Mother and baby">
-          <div class="package-info">
-            <h3>Corporate Maternal Wellness — Example Package</h3>
-            <ul>
-              <li>• On-site lactation support & nursing aids</li>
-              <li>• Flexible return-to-work plans & counselling</li>
-              <li>• Private lactation room design & installation</li>
-            </ul>
-          </div>
-        </div>
+  <div class="hero-slider" aria-live="polite">
+    <img src="img/Image_fx (45).jpg" class="hero-slide active" alt="Mother and baby 1">
+    <img src="img/A mother and daughter pose for a photo_ _ Premium AI-generated PSD.jpeg" class="hero-slide" alt="Mother and baby 2">
+   <img src="img/17e976a0-6b8d-4603-9f2a-c4809ddf1e9d.jpeg" class="hero-slide" alt="Mother and baby 2">
+    <img src="img/African mother with baby in her arms luminous with key concept on arial gray background _ Premium AI-generated image.jpeg" class="hero-slide" alt="Mother and baby 2">
+  <img src="img/9986047a-9d7a-4bf8-b887-9b2af30babe2.jpeg" class="hero-slide" alt="Mother and baby 2">
+  <img src="img/119b79bb-906e-40a2-bfd1-0c1936119ecb.jpeg" class="hero-slide" alt="Mother and baby 2">
+  </div>
+
+  <div class="package-info">
+    <h3>Corporate Maternal Wellness — Example Package</h3>
+    <ul>
+      <li>• On-site lactation support & nursing aids</li>
+      <li>• Flexible return-to-work plans & counselling</li>
+      <li>• Private lactation room design & installation</li>
+    </ul>
+  </div>
+</div>
+
       </div>
     </section>
 
@@ -102,6 +112,49 @@
         </div>
       </div>
     </section>
+
+<section id="cofounders" class="section section-light"> 
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Meet the Co-Founders</h2>
+      <p>The visionaries behind Amani Maternal Bliss Care.</p>
+    </div>
+
+    <div class="cofounders-grid">
+      <div class="cofounders-slider card slide-in-left">
+        <div class="cofounders-slides">
+          <figure class="cf-slide active">
+            <img src="img/cofounder-1.jpg" alt="Immaculate" />
+            <figcaption>
+              <h4>Immaculate Namanda</h4>
+              <p>Clinical Lead & Co-Founder</p>
+            </figcaption>
+          </figure>
+
+          <figure class="cf-slide">
+            <img src="img/cofounder-2.jpg" alt="[Co-founder Name]" />
+            <figcaption>
+              <h4>Monica Nabakooza</h4>
+              <p>Operations & Partnerships Co-Founder</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="cf-controls" aria-hidden="true">
+          <button class="cf-prev" aria-label="Previous">‹</button>
+          <button class="cf-next" aria-label="Next">›</button>
+        </div>
+      </div>
+      <div class="cofounders-text fade-in">
+        <h3>About the Co-Founders</h3>
+        <p><strong>Immaculate Namanda</strong> and <strong>Monica Nabakooza</strong> bring decades of clinical maternal care and community engagement experience. Together they combine clinical expertise with corporate program design to deliver maternal wellness services that are compassionate, measurable and scalable. Their leadership focuses on evidence-based care, workplace integration, and community outreach  ensuring both individual mothers and organizations receive purposeful support.</p>
+        <p>Their complementary skillsclinical nursing leadership, programme design, and corporate partnerships — guide Amani’s mission to improve maternal outcomes while strengthening employee wellbeing and retention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
 
     <section id="services" class="section">
       <div class="container">
@@ -273,3 +326,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
