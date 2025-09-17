@@ -103,3 +103,64 @@ window.addEventListener('load', () => {
     }, 1000);
   }, 10000); 
 });
+
+(function createLoaderBubbles(){
+  const container = document.querySelector('.loader-bubbles');
+  if (!container) return;
+  const bubbleCount = 14;
+  for (let i = 0; i < bubbleCount; i++) {
+    const b = document.createElement('div');
+    b.className = 'loader-bubble';
+    const size = 8 + Math.round(Math.random() * 38); // px
+    b.style.width = `${size}px`;
+    b.style.height = `${size}px`;
+    b.style.left = `${5 + Math.random() * 90}%`;
+    b.style.background = `rgba(255,255,255, ${0.08 + Math.random() * 0.25})`;
+    const delay = Math.random() * 2;
+    const duration = 8 + Math.random() * 8;
+    b.style.animationDuration = `${duration}s`;
+    b.style.animationDelay = `${delay}s`;
+    container.appendChild(b);
+  }
+})();
+
+(function heroSlider(){
+  const slides = document.querySelectorAll('.hero-slider .hero-slide');
+  if (!slides.length) return;
+  let idx = 0;
+  setInterval(() => {
+    slides[idx].classList.remove('active');
+    idx = (idx + 1) % slides.length;
+    slides[idx].classList.add('active');
+  }, 3000);
+})();
+
+(function cofoundersSlider(){
+  const slides = document.querySelectorAll('.cf-slide');
+  if (!slides.length) return;
+  let i = 0;
+  const next = () => {
+    slides[i].classList.remove('active');
+    i = (i + 1) % slides.length;
+    slides[i].classList.add('active');
+  };
+  const prev = () => {
+    slides[i].classList.remove('active');
+    i = (i - 1 + slides.length) % slides.length;
+    slides[i].classList.add('active');
+  };
+
+  slides[0].classList.add('active');
+
+  const interval = setInterval(next, 4200);
+
+  const btnNext = document.querySelector('.cf-next');
+  const btnPrev = document.querySelector('.cf-prev');
+  if (btnNext) btnNext.addEventListener('click', () => { next(); clearInterval(interval); });
+  if (btnPrev) btnPrev.addEventListener('click', () => { prev(); clearInterval(interval); });
+
+  const container = document.querySelector('.cofounders-slider');
+  if (container) {
+    container.addEventListener('mouseenter', () => clearInterval(interval));
+  }
+})();
