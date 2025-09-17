@@ -159,6 +159,69 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+/* ---------- Loader - extra layered background and bubbles ---------- */
+
+.loader-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(105, 3, 126, 0.87), transparent 12%),
+    radial-gradient(circle at 80% 70%, rgba(117, 10, 117, 0.795), transparent 18%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(255,255,255,0.02));
+  mix-blend-mode: screen;
+  overflow: hidden;
+  animation: loaderPulse 6s ease-in-out infinite;
+}
+
+@keyframes loaderPulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.02); opacity: 0.95; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* floating bubble container */
+.loader-bubbles {
+  position: absolute;
+  bottom: 6%;
+  left: 10%;
+  right: 10%;
+  height: 60%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* bubble (generated in JS) */
+.loader-bubble {
+  position: absolute;
+  bottom: -40px;
+  border-radius: 50%;
+  opacity: 0.85;
+  filter: blur(0.2px);
+  mix-blend-mode: screen;
+  animation: bubbleRise linear forwards;
+}
+
+@keyframes bubbleRise {
+  to {
+    transform: translateY(-120vh) scale(1.15);
+    opacity: 0;
+  }
+}
+
+/* subtle white swirl overlay inside the square, to blend with sea-mix */
+.square::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(255, 254, 255, 0.747), transparent 20%),
+    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.705), transparent 25%);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 20px;
+}
 
 
 .navbar {
@@ -217,17 +280,19 @@ body {
 
 .nav-links a {
   text-decoration: none;
-  color: #4b5563;
+  color: #404852;
   font-weight: 500;
   transition: color 0.3s;
 }
 
 .nav-links a:hover {
-  color: #14b8a6;
+  color: #570052;
 }
-
+ .btn span {
+  color: white;
+}
 .btn {
-  background: #14b8a6;
+  background: #570052;
   color: white;
   padding: 12px 24px;
   border: none;
@@ -240,7 +305,7 @@ body {
 }
 
 .btn:hover {
-  background: #0b8f84;
+  background:#570052;
   color: white;
   transform: translateY(-2px);
   transition: 1s ease-out;
@@ -248,21 +313,50 @@ body {
 
 .btn-outline {
   background: transparent;
-  color: #14b8a6;
-  border: 2px solid #14b8a6;
+  color: #570052;
+  border: 2px solid #570052;
 }
 
 .btn-outline:hover {
-  background: #11a392;
+  background: #570052;
   color: white;
 }
-
 .hero {
-  background: linear-gradient(135deg, #cdf1e9, #cdf7e3);
+  position: relative; /* Needed so ::before stays behind */
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.692)) , 
+              url(img/119b79bb-906e-40a2-bfd1-0c1936119ecb.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);   /* <-- controls the blur strength */
+  transform: scale(1.1); /* avoids edge cut-off when blurred */
+  z-index: 0;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1; /* keeps your text/content above blur */
+}
+
+/* .hero {
+  background:linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.692)) , url(img/119b79bb-906e-40a2-bfd1-0c1936119ecb.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
   padding: 0px 0 80px;
   min-height: 100vh;
   overflow: hidden;
-}
+} */
 
 .hero-container {
   max-width: 1200px;
@@ -277,14 +371,14 @@ body {
 .hero-content h1 {
   font-size: 3.5rem;
   font-weight: 700;
-  color: #1f2937;
+  color: #ffffff;
   margin-bottom: 44px;
   line-height: 1.1;
 }
 
 .hero-content p {
   font-size: 1rem;
-  color: #4b5563;
+  color: #ffffff;
   margin-bottom: 32px;
 }
 
@@ -301,19 +395,20 @@ body {
         }
     .stat-item{
         width: 200px;
-        height: 70px;
-        background-color: rgba(255, 255, 255, 0.459);
+        height: 40px;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.185);
     }
         .stat-item h3 {
             font-size: 1rem;
-            color: #244b70;
+            color: #ffffff;
             margin-bottom: 0.5rem;
         }
 
         .stat-line {
             width: 100px;
             height: 3px;
-            background: #20b2aa;
+            background:#570052;
         }
 
 
@@ -336,6 +431,33 @@ body {
   border-radius: 12px;
   display: block;
 }
+/* Hero slider */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+  display: block;
+}
+
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
 
 .package-info {
   margin-top: 16px;
@@ -353,7 +475,7 @@ body {
 .package-info ul {
   list-style: none;
   font-size: 14px;
-  color: #4b5563;
+  color: #570052;
 }
 
 .package-info li {
@@ -365,7 +487,7 @@ body {
 }
 
 .section-dark {
-  background: #1f2937;
+  background: #570052;
   color: white;
 }
 
@@ -421,6 +543,78 @@ body {
   background: #f3f4f6; 
 }
 
+/* Co-founders section */
+.cofounders-grid {
+  display: grid;
+  grid-template-columns: 500px 1fr; /* bigger image container */
+  gap: 3rem;
+  align-items: start;
+}
+
+.cofounders-text h3 { margin-bottom: 0.8rem; }
+.cofounders-text p { line-height: 2.5; color:  #570052; }
+
+.cofounders-slider {
+  padding: 0;
+  overflow: hidden;
+  width: 100%;
+  max-width: 600px; /* increased width */
+}
+
+.cofounders-slides {
+  position: relative;
+  height: 100%;
+  min-height: 700px; /* ensures enough height for images */
+}
+
+.cf-slide {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 12px;
+  align-items: end;
+  padding: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.03));
+}
+
+.cf-slide img {
+  width: 100%;
+  height: 600px; /* bigger image */
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.cf-slide figcaption {
+  padding: 12px 8px;
+  backdrop-filter: blur(4px);
+  background: #570052;
+  border-radius: 8px;
+}
+
+.cf-slide h4 { margin-bottom: 4px; font-size: 1.05rem; color: #fafafa; }
+.cf-slide p { font-size: 0.95rem; color: #f1f2f3; margin: 0; }
+
+.cf-slide.active { opacity: 1; transform: translateY(0); z-index: 2; }
+
+/* control buttons */
+.cf-controls {
+  display:flex; gap:12px; justify-content:center; padding:12px 8px;
+}
+.cf-controls button {
+  background: #570052;
+  color: white;
+  border: 1px solid  #570052; 
+  padding:6px 12px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:18px;
+}
+
 .service-card {
   text-align: center;
   padding: 2.5rem 1.5rem;
@@ -437,7 +631,7 @@ body {
 .service-card h3 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: #2c3e50;
+  color: #570052;
 }
 
 .section-dark .service-card h3 {
@@ -460,7 +654,7 @@ body {
 .product-card h3 {
   font-size: 1.2rem;
   margin-bottom: 0.8rem;
-  color: #2c3e50;
+  color: #570052;
 }
 
 .about-grid {
@@ -496,7 +690,7 @@ body {
 .feature-dot {
   width: 12px;
   height: 12px;
-  background: #20b2aa;
+  background:#e6e6e6;
   border-radius: 50%;
 }
 
@@ -556,7 +750,7 @@ body {
 }
 
 .footer {
-  background: #1a252f;
+  background: #570052;
   color: white;
   padding: 2rem 0;
 }
@@ -670,3 +864,12 @@ body {
 .slide-in-left { opacity: 0; transform: translateX(-50px); }
 .slide-in-right { opacity: 0; transform: translateX(50px); }
 .scale-in { opacity: 0; transform: scale(0.8); }
+@media (min-width: 769px) {
+  .mobile-menu-btn { display: none !important; }
+  .nav-links { display: flex !important; position: static !important; width: auto !important; background: transparent !important; padding: 0 !important; box-shadow: none !important; }
+}
+/* make cofounders stack on narrow screens */
+@media (max-width: 900px) {
+  .cofounders-grid { grid-template-columns: 1fr; }
+  .cofounders-slider .cf-slide img { height: 660px; }
+}
