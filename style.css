@@ -337,7 +337,7 @@ body {
   width: 100%;
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.692)) , 
-              url(img/119b79bb-906e-40a2-bfd1-0c1936119ecb.jpeg);
+              url(img/SHE.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -937,5 +937,6 @@ body {
   .cofounders-grid { grid-template-columns: 1fr; }
   .cofounders-slider .cf-slide img { height: 660px; }
 }
+
 
 
