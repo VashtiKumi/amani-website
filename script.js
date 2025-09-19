@@ -100,8 +100,8 @@ window.addEventListener('load', () => {
         }
       }
       document.body.style.overflow = 'auto';
-    }, 1000);
-  }, 10000); 
+    }, 500);
+  }, 5000); 
 });
 
 (function createLoaderBubbles(){
@@ -164,3 +164,4 @@ window.addEventListener('load', () => {
     container.addEventListener('mouseenter', () => clearInterval(interval));
   }
 })();
+
