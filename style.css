@@ -214,7 +214,6 @@ body {
   }
 }
 
-/* subtle white swirl overlay inside the square, to blend with sea-mix */
 .square::after {
   content: "";
   position: absolute;
@@ -568,7 +567,8 @@ body {
 .cofounders-slides {
   position: relative;
   height: 100%;
-  min-height: 700px; /* ensures enough height for images */
+  min-height: 770px;
+  gap:30px;
 }
 
 .cf-slide {
@@ -587,7 +587,7 @@ body {
 
 .cf-slide img {
   width: 100%;
-  height: 600px; /* bigger image */
+  height: 670px; /* bigger image */
   object-fit: cover;
   border-radius: 12px;
   display: block;
@@ -937,6 +937,7 @@ body {
   .cofounders-grid { grid-template-columns: 1fr; }
   .cofounders-slider .cf-slide img { height: 660px; }
 }
+
 
 
 
