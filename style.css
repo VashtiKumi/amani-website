@@ -758,6 +758,31 @@ body {
   color: white;
   padding: 2rem 0;
 }
+
+#scrollTopBtn {
+  display: none; 
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 999;
+  font-size: 22px;
+  border: none;
+  outline: none;
+  background: #570052;
+  color: white;
+  cursor: pointer;
+  padding: 14px 18px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+#scrollTopBtn:hover {
+  background: #7a0074;
+  transform: translateY(-3px);
+}
+
+
 @media (max-width: 1024px) {
   .hero-container {
     grid-template-columns: 1fr;
@@ -937,6 +962,7 @@ body {
   .cofounders-grid { grid-template-columns: 1fr; }
   .cofounders-slider .cf-slide img { height: 660px; }
 }
+
 
 
 
