@@ -165,3 +165,35 @@ window.addEventListener('load', () => {
   }
 })();
 
+// Scroll-to-top button
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.onscroll = function() {
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    scrollTopBtn.style.display = "block";
+  } else {
+    scrollTopBtn.style.display = "none";
+  }
+};
+
+scrollTopBtn.onclick = function() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+// Contact form handling
+const contactForm = document.getElementById("contactForm");
+const formSuccess = document.getElementById("formSuccess");
+
+contactForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  // Simulate successful submission (you’ll connect backend/email later)
+  formSuccess.style.display = "block";
+
+  // Hide message after 3 seconds
+  setTimeout(() => {
+    formSuccess.style.display = "none";
+    contactForm.reset();
+  }, 3000);
+});
+
